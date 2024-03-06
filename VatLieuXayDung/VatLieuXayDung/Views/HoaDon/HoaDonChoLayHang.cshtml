@@ -1,0 +1,41 @@
+﻿@model VatLieuXayDung.Models.ChoXacNhan
+
+@{
+    ViewBag.Title = "HoaDonChoLayHang";
+    Layout = "~/Views/Shared/Layout_2.cshtml";
+}
+
+
+@foreach (var item in Model.lstHoaDon)
+{
+    <div class="rooms-cholayhang">
+        <div class="diemden_cungloai">Chờ lấy hàng</div>
+        @foreach (var cthd in Model.LstCTHD)
+        {
+            if (cthd.MaHD == item.MaHD)
+            {
+                <p class="hrclass"></p>
+                <div class="room">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="room_image"><img src="~/Content/images/product/large-size/@cthd.SanPham.ImageUrl" alt=""></div>
+                            <div class="room_khoihanh rating_r rating_r_@cthd.SanPham.SoSao offers_rating"><a href="single_listing.html"><i></i><i></i><i></i><i></i><i></i> </a></div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="room_content">
+                                <div class="room_title ml-50">@cthd.SanPham.TenSP</div>
+                                <div class="room_extra ml-50">@cthd.SanPham.MoTa</div>
+                                <div class="room_extra ml-50">Số lượng: @cthd.SoLuong</div>
+                                <div class="giaban_1 ml-50">Giá bán 1 sản phẩm: @string.Format("{0:N0}", cthd.GiaBan)&ETH;</div>
+                                <div class="room_diadiem ml-50">Tổng cộng: @string.Format("{0:N0}", cthd.ThanhTien)&ETH;</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        }
+        <div class="tongtien">Số tiền phải trả: @string.Format("{0:N0}", item.ThanhTien)&ETH;</div>
+    </div>
+}
+

@@ -1,0 +1,154 @@
+﻿@model VatLieuXayDung.Models.KhachHang
+
+@{
+    ViewBag.Title = "ThongTinCaNhan";
+    Layout = "~/Views/Shared/Layout_2.cshtml";
+}
+
+@{
+    string[] ngayThangNam = Model.NgaySinh.ToString().Split('/');
+    string ngay = ngayThangNam[1];
+    string thang = ngayThangNam[0];
+    string nam1 = ngayThangNam[2];
+    string[] namsinh = nam1.Split(' ');
+    string nam = namsinh[0];
+    string tb = Session["thongtin"] as string;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 order-2 order-lg-1">
+            <!--Category Menu Start-->
+            <div class="li-blog-sidebar-wrapper">
+                <div class="li-blog-sidebar pt-25">
+                    <h4 class="li-blog-sidebar-title" style="font-family: Arial; cursor:pointer; color:#fed700"><a href="/NguoiDung/ThongTinCaNhan">THÔNG TIN CÁ NHÂN</a></h4>
+                </div>
+                <div class="li-blog-sidebar">
+                    <h4 class="li-blog-sidebar-title" style="font-family: Arial; cursor:pointer"><a href="/NguoiDung/BaoMat">BẢO MẬT</a></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 order-1 order-lg-2">
+            <form action="/NguoiDung/LuuThongTin">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="checkbox-form">
+                            @if (!string.IsNullOrEmpty(tb))
+                            {
+                                <h4 style="color:#fed700">@Session["thongtin"]</h4>
+                            }
+                            <h3 style="padding-top:30px;">Thông tin cá nhân</h3>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Họ Tên <span class="required">*</span></label>
+                                        <input name="ten" placeholder="VD: Nguyễn Nguyên Bảo" type="text" value="@Model.TenKH" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="checkout-form-list">
+                                                <label>Ngày</label>
+                                                <select name="ngay">
+                                                    <option selected>@ngay</option>
+                                                    @for(int i = 1; i<32; i++)
+                                                    {
+                                                        if(i != Convert.ToInt32(ngay))
+                                                        {
+                                                            <option>@i</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="checkout-form-list">
+                                                <label>Tháng</label>
+                                                <select name="thang">
+                                                    <option selected>@thang</option>
+                                                    @for (int i = 1; i < 13; i++)
+                                                    {
+                                                        if (i != Convert.ToInt32(thang))
+                                                        {
+                                                            <option>@i</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="checkout-form-list">
+                                                <label>Năm</label>
+                                                <select name="nam">
+                                                    <option selected>@nam</option>
+                                                    @for (int i = 1950; i < DateTime.Now.Year; i++)
+                                                    {
+                                                        if (i != Convert.ToInt32(nam))
+                                                        {
+                                                            <option>@i</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Giới Tính</label>
+                                        <select name="gioitinh">
+                                            <option selected>@Model.Phai</option>
+                                            @if (Model.Phai == "Nam")
+                                            {
+                                                <option>Nữ</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option>Nam</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Địa Chỉ <span class="required">*</span></label>
+                                        <input name="diachi" placeholder="Số nhà, Đường phố, Quận Huyện, Thành phố,.." type="text" value="@Model.DiaChi" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Số Điện Thoại <span class="required">*</span></label>
+                                        <input name="sdt" placeholder="VD: 0123456789" type="tel" value="@Model.SDT" minlength="10" maxlength="10" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Email</label>
+                                        <input name="email" placeholder="VD: me@gmail.com" type="email" value="@Model.Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="order-button-payment">
+                                                <input value="Hủy" type="button" onclick="location.href='@Url.Action("ThongTinCaNhan", "NguoiDung")'">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding-bottom:50px;">
+                                            <div class="order-button-payment">
+                                                <input value="Lưu" type="submit">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

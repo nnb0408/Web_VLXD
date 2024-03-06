@@ -1,0 +1,159 @@
+﻿@model VatLieuXayDung.Models.GioHang
+
+@{
+    ViewBag.Title = "LayGioHang";
+    Layout = "~/Views/Shared/Layout_2.cshtml";
+}
+
+<div class="Shopping-cart-area pt-60 pb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @using (Html.BeginForm())
+                {
+                    <div class="table-content table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="li-product-remove">Xóa</th>
+                                    <th class="li-product-thumbnail">Hình Ảnh</th>
+                                    <th class="cart-product-name">Sản Phẩm</th>
+                                    <th class="li-product-price">Giá Bán</th>
+                                    <th class="li-product-quantity">Số Lượng</th>
+                                    <th class="li-product-subtotal">Tổng Cộng</th>
+                                    <th>Cập nhật</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.SanPham)
+                                {
+                                    using (Html.BeginForm("CapNhatGioHangSo2", "GioHang", new { masp = item.MaSP }))
+                                    {
+                                        <tr>
+                                            <td class="li-product-remove"><a href="@Url.Action("XoaSanPhamTrongGio", "GioHang", new { masp = item.MaSP })"><i class="fa fa-times"></i></a></td>
+                                            <td class="li-product-thumbnail"><a href="@Url.Action("XemChiTietSanPham", "SanPham", new { masp = item.MaSP, maloai = item.SanPham.MaLoai })"><img src="~/Content/images/product/large-size/@item.SanPham.ImageUrl" alt="Li's Product Image" width="150" height="150"></a></td>
+                                            <td class="li-product-name"><a href="@Url.Action("XemChiTietSanPham", "SanPham", new { masp = item.MaSP, maloai = item.SanPham.MaLoai })">@item.SanPham.TenSP</a></td>
+                                            <td class="li-product-price"><span class="amount">@string.Format("{0:N0}", item.SanPham.GiaBan) Đ</span></td>
+                                            <td class="quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" name="soluong" value="@item.SoLuong" min ="1" type="text">
+                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal"><span class="amount">@string.Format("{0:N0}", item.SanPham.GiaBan * item.SoLuong) Đ</span></td>
+                                            <td>
+                                                <div class="coupon-all">
+                                                    <div class="coupon2">
+                                                        <input class="button" value="Cập nhật" type="submit">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        @if (ViewBag.TotalPages > 1)
+                        {
+                            <div class="paginatoin-area">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <ul class="pagination-box">
+                                            @if (ViewBag.CurrentPage > 1)
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("LayGioHang", new { page = ViewBag.CurrentPage - 1 })" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
+                                                </li>
+                                            }
+                                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                            {
+                                                if (i == ViewBag.CurrentPage)
+                                                {
+                                                    <li class="active"><a href="#">@i</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a href="@Url.Action("LayGioHang", new { page = i })">@i</a></li>
+
+                                                }
+                                            }
+                                            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("LayGioHang", new { page = ViewBag.CurrentPage + 1 })" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="coupon-all">
+                                @using (Html.BeginForm("GiamGia", "GioHang"))
+                                {
+                                    @*if (Model.Index == 1)
+                                    {
+                                        if (Model.Flag == 1)
+                                        {
+                                            <h3 class="mb-4 text-center text-danger font-weight-bold" style="text-decoration: line-through;">@Session["coupon"]</h3>
+                                        }
+                                        else
+                                        {
+                                            <h3 class="mb-4 text-center text-success font-weight-bold">@Session["coupon"]</h3>
+                                        }
+
+                                    }*@
+                                    <div class="form-group coupon">
+                                        <select class="form-control" id="genderSelect" name="coupon_code" required>
+                                            <option selected>@Model.Magiamgia</option>
+                                            @foreach (var item in Model.KhuyenMai)
+                                            {
+                                                if (item.NgayHetHan >= DateTime.Now.Date)
+                                                {
+                                                    <option>@item.MaKhuyenMai - Giảm @item.PhanTramGiam%</option>
+                                                }
+                                            }
+
+                                            @foreach (var item in Model.KhuyenMai)
+                                            {
+                                                if (item.NgayHetHan < DateTime.Now.Date)
+                                                {
+                                                    <option>@item.MaKhuyenMai - Hết hạn</option>
+                                                }
+                                            }
+                                        </select>
+                                        <input class="button" name="apply_coupon" value="Xác nhận" type="submit">
+                                    </div>
+                                    @*<div class="coupon">
+                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Phiếu giảm giá" type="text">
+                <input class="button" name="apply_coupon" value="Xác nhận" type="submit">
+            </div>*@
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 ml-auto">
+                            <div class="cart-page-total">
+                                <h2>Tiền giỏ hàng</h2>
+                                <ul>
+                                    <li>Thành Tiền <span>@string.Format("{0:N0}", Session["tongtien"]) &ETH;</span></li>
+                                    <li>Giảm Giá <span>@string.Format("{0:N0}", Session["giamgia"]) &ETH;</span></li>
+                                    <li>Tiền Cọc <span>@string.Format("{0:N0}", Session["tiencoc"]) &ETH;</span></li>
+                                    <li>Tổng Cộng <span>@string.Format("{0:N0}", Session["tongcong"]) &ETH;</span></li>
+                                </ul>
+                                <a href="@Url.Action("DatHang", "GioHang", new { coupon = Session["giamgia"], coupon_code = Model.Magiamgia})">Đặt hàng</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,173 @@
+﻿@model VatLieuXayDung.Models.AllSanPham
+
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="col-lg-3 order-2 order-lg-1">
+    <!--Category Menu Start-->
+    <div class="li-blog-sidebar-wrapper">
+        <div class="li-blog-sidebar">
+            <div class="li-sidebar-search-form pt-xs-30 pt-sm-30">
+                <form action="#">
+                    <input type="text" class="li-search-field" placeholder="search here">
+                    <button type="submit" class="li-search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="li-blog-sidebar pt-25">
+            <h4 class="li-blog-sidebar-title" style="font-family:Arial">VẬT LIỆU</h4>
+            <ul class="li-blog-archive">
+                @foreach (var item in Model.ListLoaiVL)
+                {
+                    foreach (var itemsl in Model.ListSL)
+                    {
+                        if (itemsl.LoaiSP == item.MaLoai)
+                        {
+                            <li><a href="@Url.Action("XemSanPhamTheoLoai", "SanPham", new {loaisp = itemsl.LoaiSP})">@item.TenLoai (@itemsl.SoLuong)</a></li>
+                        }
+                    }
+
+                }
+            </ul>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title" style="font-family:Arial">THIẾT BỊ</h4>
+            <ul class="li-blog-archive">
+                @foreach (var item in Model.ListLoaiTB)
+                {
+                    foreach (var itemsl in Model.ListSL)
+                    {
+                        if (itemsl.LoaiSP == item.MaLoai)
+                        {
+                            <li><a href="@Url.Action("XemSanPhamTheoLoai", "SanPham", new {loaisp = item.MaLoai})">@item.TenLoai (@itemsl.SoLuong)</a></li>
+                        }
+                    }
+
+                }
+            </ul>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title" style="font-family:Arial">Bài đăng gần đây</h4>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="#">
+                        <img class="img-full" src="~/Content/images/product/small-size/7.jpg" alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="#">Cưa máy Husqvarna</a></span>
+                    <span class="li-post-date">20-10-2023</span>
+                </div>
+            </div>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="#">
+                        <img class="img-full" src="~/Content/images/product/small-size/7.jpg" alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="#">Cưa máy Husqvarna</a></span>
+                    <span class="li-post-date">20-10-2023</span>
+                </div>
+            </div>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="#">
+                        <img class="img-full" src="~/Content/images/product/small-size/7.jpg" alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="#">Cưa máy Husqvarna</a></span>
+                    <span class="li-post-date">20-10-2023</span>
+                </div>
+            </div>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title">Tags</h4>
+            <ul class="li-blog-tags">
+                <li><a href="#">GẠCH</a></li>
+                <li><a href="#">CÁT</a></li>
+                <li><a href="#">XI MĂNG</a></li>
+                <li><a href="#">VẬT LIỆU</a></li>
+                <li><a href="#">THIẾT BỊ</a></li>
+                <li><a href="#">PYNBATU</a></li>
+                <li><a href="#">MÁY TRỘN</a></li>
+                <li><a href="#">MÁY XÚC</a></li>
+                <li><a href="#">CÔNG CỤ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Begin Li's Main Content Area -->
+<div class="col-lg-9 order-lg-2 order-1">
+    <div class="row li-main-content">
+        <div class="col-lg-6 col-md-6">
+            <div class="li-blog-single-item pb-25">
+                <div class="li-blog-banner embed-responsive embed-responsive-16by9">
+                    <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/300107209&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
+                </div>
+                <div class="li-blog-content">
+                    <div class="li-blog-details">
+                        <h3 class="li-blog-heading pt-25"><a href="#">Alan Walker - Alone</a></h3>
+                        <div class="li-blog-meta">
+                            <a class="author" href="#"><i class="fa fa-user"></i>Admin</a>
+                            <a class="comment" href="#"><i class="fa fa-comment-o"></i> 3 comment</a>
+                            <a class="post-time" href="#"><i class="fa fa-calendar"></i> 25 nov 2018</a>
+                        </div>
+                        <p>Alan Walker - Alone & Sing Me To Sleep ( MASHUP cover by J.Fla )</p>
+                        <p>Follow Nam Konz and others on SoundCloud.</p>
+                        <a class="read-more" href="#">Read More...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="li-blog-single-item pb-25">
+                <div class="li-blog-banner embed-responsive embed-responsive-16by9">
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/503345004&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/xesii" title="Xesi" target="_blank" style="color: #cccccc; text-decoration: none;">Xesi</a> · <a href="https://soundcloud.com/xesii/xesi-x-hoaprox-vo-tinh" title="XESI x HOAPROX - VÔ TÌNH" target="_blank" style="color: #cccccc; text-decoration: none;">XESI x HOAPROX - VÔ TÌNH</a></div>
+                </div>
+                <div class="li-blog-content">
+                    <div class="li-blog-details">
+                        <h3 class="li-blog-heading pt-25"><a href="#">Vô Tình</a></h3>
+                        <div class="li-blog-meta">
+                            <a class="author" href="#"><i class="fa fa-user"></i>Admin</a>
+                            <a class="comment" href="#"><i class="fa fa-comment-o"></i> 3 comment</a>
+                            <a class="post-time" href="#"><i class="fa fa-calendar"></i> 25 nov 2018</a>
+                        </div>
+                        <p>Follow Xesi and others on SoundCloud.</p>
+                        <p>#votinh #xesi #hoaprox</p>
+                        <a class="read-more" href="#">Read More...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="li-blog-single-item pb-25">
+                <div class="li-blog-banner embed-responsive embed-responsive-16by9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jfUzfetGxJs?si=h2lP96YNS4-Hz735" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="li-blog-content">
+                    <div class="li-blog-details">
+                        <h3 class="li-blog-heading pt-25"><a href="blog-details-left-sidebar.html">Love Me Like You Do</a></h3>
+                        <div class="li-blog-meta">
+                            <a class="author" href="#"><i class="fa fa-user"></i>Admin</a>
+                            <a class="comment" href="#"><i class="fa fa-comment-o"></i> 3 comment</a>
+                            <a class="post-time" href="#"><i class="fa fa-calendar"></i> 25 nov 2018</a>
+                        </div>
+                        <p>
+                            Sunset Mood © Magic Music Group LLC 2022. We own rights to all content uploaded. Any reproduction of this content will result in a Content ID claim.
+                            Usage Policy: https://magicmusicllc.com/
+                        </p>
+                        <a class="read-more" href="#">Read More...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Li's Pagination End Here Area -->
+    </div>
+</div>
+<!-- Li's Main Content Area End Here -->

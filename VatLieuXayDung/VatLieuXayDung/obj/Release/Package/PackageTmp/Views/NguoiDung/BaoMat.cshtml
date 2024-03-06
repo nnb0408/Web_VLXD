@@ -1,0 +1,74 @@
+﻿@model VatLieuXayDung.Models.KhachHang
+
+@{
+    ViewBag.Title = "BaoMat";
+    Layout = "~/Views/Shared/Layout_2.cshtml";
+}
+@{ 
+    string tb = Session["thongtin"] as string;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 order-2 order-lg-1">
+            <!--Category Menu Start-->
+            <div class="li-blog-sidebar-wrapper">
+                <div class="li-blog-sidebar pt-25">
+                    <h4 class="li-blog-sidebar-title" style="font-family: Arial; cursor:pointer"><a href="/NguoiDung/ThongTinCaNhan">THÔNG TIN CÁ NHÂN</a></h4>
+                </div>
+                <div class="li-blog-sidebar">
+                    <h4 class="li-blog-sidebar-title" style="font-family: Arial; cursor:pointer; color:#fed700"><a href="/NguoiDung/ThongTinCaNhan">BẢO MẬT</a></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 order-1 order-lg-2">
+            <form action="/NguoiDung/DoiMatKhau">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="checkbox-form">
+                            @if (!string.IsNullOrEmpty(tb))
+                            {
+                                <h4 style="color:#fed700">@Session["thongtin"]</h4>
+                            }
+                            <h3 style="padding-top:30px;">Đổi Mật Khẩu</h3>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Mật Khẩu Cũ <span class="required">*</span></label>
+                                        <input name="mkcu" type="password" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Mật Khẩu Mới <span class="required">*</span></label>
+                                        <input name="mkmoi" type="password" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="checkout-form-list">
+                                        <label>Nhập Lại Mật Khẩu Mới <span class="required">*</span></label>
+                                        <input name="remkmoi" type="password" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="order-button-payment">
+                                                <input value="Hủy" type="button" onclick="location.href='@Url.Action("BaoMat", "NguoiDung")'">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="padding-bottom:50px;">
+                                            <div class="order-button-payment">
+                                                <input value="Lưu" type="submit">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

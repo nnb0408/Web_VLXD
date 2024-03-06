@@ -1,0 +1,219 @@
+﻿@*@model IEnumerable<VatLieuXayDung.Models.SanPham>*@
+@using VatLieuXayDung.Models
+@model SanPhamViewModel
+
+@{
+    ViewBag.Title = "XemChiTietSanPham";
+    Layout = "~/Views/Shared/Layout_2.cshtml";
+}
+
+@{
+    var n = 0;
+    var temp = 0;
+    var tb = Session["DG"] as string;
+}
+
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area" style="margin-top: -20px">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="/SanPham/ShowAllSanPham">Home</a></li>
+                <li class="active">Chi Tiết Sản Phẩm</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!-- content-wraper start -->
+<div class="content-wraper">
+    <div class="container">
+        <div class="row single-product-area">
+            <div class="col-lg-5 col-md-6">
+                <!-- Product Details Left -->
+                <div class="product-image">
+                    <img src="~/Content/images/product/large-size/@Model.SanPham.ImageUrl" width="300" height="300" alt="Li's Product Image">
+                </div>
+                <hr />
+                <div class="product-image" style="top:-30px">
+                    <img src="~/Content/images/menu/logo/6.jpg" alt="Li's Product Image">
+                </div>
+
+                <!--// Product Details Left -->
+            </div>
+
+            <div class="col-lg-7 col-md-6" style="position:relative; top:-40px;">
+                <div class="product-details-view-content pt-60">
+                    <div class="product-info">
+                        <h2>@Model.SanPham.TenSP <span style="color:#808080">(@Model.SanPham.LUOTDANHGIA lượt đánh giá)</span></h2>
+                        <span class="product-details-ref">@Model.SanPham.LoaiSanPham.TenLoai</span>
+                        <div class="rating-box">
+                            <ul class="rating">
+                                @for (int i = 1; i <= Model.SanPham.SoSao; i++)
+                                {
+                                    <li><i class="fa fa-star-o"></i></li>
+                                    temp = i;
+                                }
+                                @{
+                                    n = 5 - Convert.ToInt32(temp);
+                                }
+                                @for (int j = 0; j < n; j++)
+                                {
+                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                }
+                                <li class="review-item"><a href="#">Xem Đánh Giá</a></li>
+                                <li class="review-item"><a href="#">Đánh Giá</a></li>
+                            </ul>
+                        </div>
+                        <div class="price-box pt-20">
+                            <span class="new-price new-price-2">@string.Format("{0:N0}", Model.SanPham.GiaBan) Đ</span>
+                        </div>
+                        <div class="product-desc">
+                            <p>
+                                <span>
+                                    @Model.SanPham.MoTa
+                                </span>
+                            </p>
+                        </div>
+                        <div class="single-add-to-cart">
+                            <form action="/GioHang/CapNhatGioHang" class="cart-quantity">
+                                <input type="hidden" name="masp" value="@Model.SanPham.MaSP">
+                                <div class="quantity">
+                                    <label>Số lượng</label>
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box" name="soluong" value="1" type="text">
+                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                    </div>
+                                </div>
+                                <button class="add-to-cart" type="submit">Thêm vào giỏ hàng</button>
+                                @*<a class="them-giohang" href="@Url.Action("ThemSanPhamVaoGio", "GioHang", new {masp = item.MaSP})">Thêm Vào Giỏ Hàng</a>*@
+                            </form>
+                        </div>
+                        <div class="product-additional-info pt-25">
+                            @if (Model.SanPham.YeuThich == false)
+                            {
+                                <a class="wishlist-btn" href="@Url.Action("ThemSanPhamYeuThich", "YeuThich", new { masp = Model.SanPham.MaSP })">
+                                    <i class="fa fa-heart-o"></i>Yêu thích
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="wishlist-btn" href="@Url.Action("ThemSanPhamYeuThich", "YeuThich", new { masp = Model.SanPham.MaSP })">
+                                    <i class="fa fa-heart" style="color:#fe0083"></i>Đã yêu thích
+                                </a>
+                            }
+
+                            <div class="product-social-sharing pt-25">
+                                <ul>
+                                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                    <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
+                                    <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="block-reassurance">
+                            <ul>
+                                <li>
+                                    <div class="reassurance-item">
+                                        <div class="reassurance-icon">
+                                            <i class="fa fa-check-square-o pt-1"></i>
+                                        </div>
+                                        <p> Chính sách bảo mật (Được xác nhận bởi Bảo)</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="reassurance-item">
+                                        <div class="reassurance-icon">
+                                            <i class="fa fa-truck"></i>
+                                        </div>
+                                        <p> Chính sách giao hàng (Áp dụng điều khoản công ty PYNBATU)</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="reassurance-item">
+                                        <div class="reassurance-icon">
+                                            <i class="fa fa-exchange"></i>
+                                        </div>
+                                        <p> Chính sách hoàn trả (Trong vòng 30 ngày)</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews">
+            <div class="reviews_title">Đánh giá (@Model.SanPham.LUOTDANHGIA)</div>
+            <div class="reviews_container">
+                @foreach (var item in Model.ListDanhGia)
+                {
+                    <div class="review">
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <div class="review_image">
+                                    <img src="~/Content/images/team/@item.HINHANH" alt="saaout">
+                                </div>
+                            </div>
+                            <div class="col-lg-11">
+                                <div class="review_content">
+                                    <div class="review_title_container">
+                                        <div class="review_title">@item.TIEUDE</div>
+                                        <div class="rating_r rating_r_@item.SOSAO offers_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                    </div>
+                                    <div class="review_text">
+                                        <p>@item.NOIDUNG</p>
+                                    </div>
+                                    <div class="review_name">@item.KhachHang.TenKH</div>
+                                    <div class="review_date">@item.NGAYDG</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="li-blog-comment-wrapper">
+                    @if (tb.Count() > 0)
+                    {
+                        <h2>@Session["DG"]</h2>
+                    }
+                    <h3>leave a reply</h3>
+                    <p>Bạn cần đăng nhập để bình luận *</p>
+                    <form action="/SanPham/DanhGia">
+                        <div class="comment-post-box">
+                            <div class="row">
+                                <div class="col-lg-12 mb-sm-20 mb-xs-20">
+                                    <label>Tiêu đề</label>
+                                    <input type="text" class="coment-field" name="tieude" placeholder="tiêu đề">
+                                </div>
+                                <div class="col-lg-12  mt-5">
+                                    <label>Bình Luận</label>
+                                    <textarea name="comment" placeholder="Viết một bình luận"></textarea>
+                                </div>
+                                <div class="search_item ml-3" style="width: 25.961%;">
+                                    <label>Số Sao</label>
+                                    <select name="sao" id="adults_2" class="dropdown_item_select search_input" style="background-color:#f8f8f8; color:#666666; width:100%;">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option selected>5</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" name="maSp" value="@Model.SanPham.MaSP" />
+                                <div class="col-lg-12">
+                                    <div class="coment-btn pt-30 pb-xs-30 pb-sm-30 f-left">
+                                        <input class="li-btn-2" type="submit" name="submit" value="Gửi Comment">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content-wraper end -->
+@Html.Partial("~/Views/SanPham/SanPhamCungLoaiPartial.cshtml")

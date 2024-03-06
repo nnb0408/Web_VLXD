@@ -1,0 +1,52 @@
+﻿@model IEnumerable<VatLieuXayDung.Models.SanPham_YeuThich>
+
+@{
+    ViewBag.Title = "SanPhamYeuThich";
+    Layout = "~/Views/Shared/Layout_2.cshtml";
+}
+
+<div class="wishlist-area pt-60 pb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="li-product-remove">Xóa</th>
+                                    <th class="li-product-thumbnail">Hình Ảnh</th>
+                                    <th class="cart-product-name">Sản Phẩm</th>
+                                    <th class="li-product-price">Giá Bán</th>
+                                    <th class="li-product-stock-status">Tình Trạng</th>
+                                    <th class="li-product-add-cart">add to cart</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="li-product-remove"><a href="@Url.Action("XoaSanPhamYeuThich", "YeuThich", new {masp = item.MaSP})"><i class="fa fa-times"></i></a></td>
+                                        <td class="li-product-thumbnail"><a href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = item.MaSP, maloai = item.SanPham.MaLoai})"><img src="~/Content/images/product/large-size/@item.SanPham.ImageUrl" alt="" width="150" height="150"></a></td>
+                                        <td class="li-product-name"><a href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = item.MaSP, maloai = item.SanPham.MaLoai})">@item.SanPham.TenSP</a></td>
+                                        <td class="li-product-price"><span class="amount">@string.Format("{0:N0}", item.SanPham.GiaBan) Đ</span></td>
+                                        @if (item.SanPham.TinhTrang == "Còn hàng")
+                                        {
+                                            <td class="li-product-stock-status"><span class="in-stock">@item.SanPham.TinhTrang</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="li-product-stock-status"><span class="out-stock">@item.SanPham.TinhTrang</span></td>
+
+                                        }
+                                        <td class="li-product-add-cart"><a href="@Url.Action("ThemSanPhamVaoGio", "GioHang", new {masp = item.MaSP})">Thêm vào giỏ hàng</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

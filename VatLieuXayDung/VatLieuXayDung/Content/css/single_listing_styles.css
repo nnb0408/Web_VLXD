@@ -1,0 +1,395 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/******************************
+
+[Table of Contents]
+
+1. Fonts
+2. Body and some general stuff
+3. Header
+	3.1 Top Bar
+	3.2 Logo
+	3.3 Main Nav
+	3.4 Menu
+4. Home
+	4.1 Home Slider
+	4.2 Home Slider Nav
+	4.3 Home Slider Dots
+5. Search
+6. Section Title
+7. Rating
+8. Search
+	8.1 Search Extras
+	8.2 Search More Options
+9. Hotel Info
+	9.1 Hotel Image
+	9.2 Hotel Gallery
+	9.3 Hotel Info Text
+	9.4 Hotel Info Tags
+10. Rooms
+11. Reviews
+12. Location on Map
+13. Footer
+	13.1 Footer - About
+	13.2 Footer - Blog
+	13.3 Footer - Tags
+	13.4 Footer - Contact Info
+14. Copyright
+
+
+******************************/
+
+/***********
+1. Fonts
+***********/
+
+
+/*********************************
+7. Rating
+*********************************/
+
+.rating
+{
+	margin-top: 10px;
+}
+.rating i
+{
+	font-size: 19px;
+	margin-right: 4px;
+}
+.rating i:last-child
+{
+	margin-right: 0px;
+}
+.rating_1 i:first-child{color: #ffeb8d;}
+.rating_2 i:first-child{color: #ffeb8d;}
+.rating_2 i:nth-child(2){color: #fed46b;}
+.rating_3 i:first-child{color: #ffeb8d;}
+.rating_3 i:nth-child(2){color: #fed46b;}
+.rating_3 i:nth-child(3){color: #fbb53d;}
+.rating_4 i:first-child{color: #ffeb8d;}
+.rating_4 i:nth-child(2){color: #fed46b;}
+.rating_4 i:nth-child(3){color: #fbb53d;}
+.rating_4 i:nth-child(4){color: #fa9e1b;}
+.rating_5 i:first-child{color: #ffeb8d;}
+.rating_5 i:nth-child(2){color: #fed46b;}
+.rating_5 i:nth-child(3){color: #fbb53d;}
+.rating_5 i:nth-child(4){color: #fa9e1b;}
+.rating_r i::before
+{
+	font-family: 'FontAwesome';
+	content: "\f006";
+	font-style: normal;
+	font-size: 15px;
+	margin-right: 3px;
+}
+.rating_r_1 i:first-child::before{color: #ffeb8d; content: "\f005";}
+.rating_r_2 i:first-child::before{color: #ffeb8d; content: "\f005";}
+.rating_r_2 i:nth-child(2)::before{color: #fed46b; content: "\f005";}
+.rating_r_3 i:first-child::before{color: #ffeb8d; content: "\f005";}
+.rating_r_3 i:nth-child(2)::before{color: #fed46b; content: "\f005";}
+.rating_r_3 i:nth-child(3)::before{color: #fbb53d; content: "\f005";}
+.rating_r_4 i:first-child::before{color: #ffeb8d; content: "\f005";}
+.rating_r_4 i:nth-child(2)::before{color: #fed46b; content: "\f005";}
+.rating_r_4 i:nth-child(3)::before{color: #fbb53d; content: "\f005";}
+.rating_r_4 i:nth-child(4)::before{color: #fa9e1b; content: "\f005";}
+.rating_r_5 i:first-child::before{color: #ffeb8d; content: "\f005";}
+.rating_r_5 i:nth-child(2)::before{color: #fed46b; content: "\f005";}
+.rating_r_5 i:nth-child(3)::before{color: #fbb53d; content: "\f005";}
+.rating_r_5 i:nth-child(4)::before{color: #fa9e1b; content: "\f005";}
+.rating_r_5 i:nth-child(5)::before{color: #ef910a; content: "\f005";}
+
+/*********************************
+10. Rooms
+*********************************/
+
+.rooms {
+    margin-left: 275px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    width: 1155px;
+    height: 100%;
+    border: 1px solid rgba(235, 145, 145, 0.14);
+    padding: 20px;
+    padding-left:40px;
+    background-color: rgba(235, 145, 145, 0.14);
+    box-sizing: border-box;
+}
+.rooms-daxacnhan {
+    margin-left: 275px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    width: 1155px;
+    height: 100%;
+    border: 1px solid rgba(148, 226, 105, 0.31);
+    padding: 20px;
+    padding-left: 40px;
+    background-color: rgba(148, 226, 105, 0.31);
+    box-sizing: border-box;
+}
+.rooms-cholayhang {
+    margin-left: 275px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    width: 1155px;
+    height: 100%;
+    border: 1px solid rgba(148, 226, 105, 0.31);
+    padding: 20px;
+    padding-left: 40px;
+    background-color: rgba(247, 240, 80, 0.40);
+    box-sizing: border-box;
+}
+.room
+{
+	margin-bottom: 33px;
+}
+.room:last-child
+{
+	margin-bottom: 0px;
+}
+.room_image
+{
+	width: 100%;
+}
+.room_image img
+{
+	width: 150px;
+    height: 150px;
+}
+.room_content
+{
+	
+}
+.diemden_cungloai {
+    position: relative;
+    left: 500px;
+    margin-bottom: 10px;
+    color: #fa9e1b;
+    font-size: 20px;
+    font-weight: 500;
+}
+.tongtien {
+    position: relative;
+    left: 465px;
+    margin-bottom: 10px;
+    color: #fa9e1b;
+    font-size: 20px;
+    font-weight: 500;
+}
+.hrclass {
+    margin-left:0px;
+    width:1075px;
+    border-bottom: 1px solid #000;
+    margin-bottom:25px;
+}
+.room_khoihanh {
+    position: absolute;
+    left: 15px;
+    bottom: 5px;
+    width: 150px;
+    height: 33px;
+    background-color: rgba(247, 177, 117, 0.50);
+    overflow: hidden;
+}
+.room_khoihanh a {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #929191;
+    line-height: 35px;
+    padding-left: 32px;
+}
+
+.room_title
+{
+	font-size: 16px;
+	font-weight: 600;
+	color: #2d2c2c;
+	margin-top: -5px;
+}
+.giaban_1 {
+    font-size: 16px;
+    color: #fa9e1b;
+    margin-top: 9px;
+}
+.room_diadiem {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fa9e1b;
+    margin-top: 9px;
+}
+.room_price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d2c2c;
+    margin-top: 9px;
+}
+.room_text
+{
+	font-size: 16px;
+	font-weight: 600;
+	color: #fa9e1b;
+	margin-top: 6px;
+}
+.room_extra
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #929191;
+	margin-top: 5px;
+}
+.room_button
+{
+	margin-top: 24px;
+}
+
+/*********************************
+11. Reviews
+*********************************/
+
+.reviews
+{
+	margin-top: 98px;
+}
+.reviews_title
+{
+	font-size: 18px;
+	font-weight: 600;
+	color: #2d2c2c;
+	text-transform: uppercase;
+}
+.reviews_container
+{
+	margin-top: 61px;
+}
+.review
+{
+	margin-bottom: 91px;
+}
+.review:last-child
+{
+	margin-bottom: 0px;
+}
+.review_image
+{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.review_image img
+{
+	width: 100%;
+}
+.review_title
+{
+	font-size: 18px;
+	font-weight: 600;
+	font-style: italic;
+	color: #2d2c2c;
+	margin-top: -3px;
+}
+.review_rating
+{
+	display: inline-block;
+	position: absolute;
+	bottom: 7px;
+	right: 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: #FFFFFF;
+	background: #fa9e1b;
+	padding-left: 25px;
+	padding-right: 25px;
+	line-height: 43px;
+	border-radius: 22px;
+}
+.review_text
+{
+	margin-top: 24px;
+}
+.review_text p:last-of-type
+{
+	margin-bottom: 0px;
+}
+.review_name
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #2d2c2c;
+	margin-top: 19px;
+}
+.review_date
+{
+	font-size: 12px;
+	font-weight: 600;
+	color: #fa9e1b;
+	margin-top: 4px;
+}
+
+/*Comment*/
+.li-blog-comment-wrapper h3 {
+	color: #242424;
+	font-size: 18px;
+	font-weight: 600;
+	padding: 0 0 26px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #e1e1e1;
+	margin-bottom: 0;
+}
+.li-blog-comment-wrapper h2 {
+    color: #fc142b;
+    font-weight: 600;
+    padding-bottom:20px;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 0;
+}
+.li-blog-comment-wrapper p {
+	padding: 25px 0 3px;
+}
+.li-blog-comment-wrapper .comment-post-box label {
+	color: #242424;
+	font-weight: 600;
+	margin-bottom: 25px;
+	display: block;
+	text-transform: capitalize;
+}
+.li-blog-comment-wrapper .comment-post-box textarea {
+	height: 130px;
+	margin-bottom: 20px;
+	padding: 10px;
+	width: 100%;
+	background: #f8f8f8;
+	border: none;
+}
+.li-blog-comment-wrapper .comment-post-box .coment-field {
+	background: #f8f8f8;
+	border: none;
+	color: #666666;
+	padding: 8px 10px;
+	width: 100%;
+}
+.li-btn-2 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 40px;
+    border: none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fa9e1b;
+    margin-top:20px;
+    padding: 0 20px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.li-btn-2:focus {
+	background-color: #fed700;
+}
+.li-btn-2:hover {
+	color: #ffffff;
+	background-color: #242424;
+}

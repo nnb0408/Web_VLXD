@@ -1,0 +1,268 @@
+﻿@model VatLieuXayDung.Models.AllSanPham
+
+@{
+    ViewBag.Title = "ShowAllSanPham";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@{
+    var n = 0;
+    var temp = 0;
+}
+
+<div class="col-lg-3 order-2 order-lg-1">
+    <!--Category Menu Start-->
+    <div class="li-blog-sidebar-wrapper">
+        <div class="li-blog-sidebar">
+            <div class="li-sidebar-search-form pt-xs-30 pt-sm-30">
+                <form action="/SanPham/TimKiemSanPham">
+                    <input type="text" name="search" class="li-search-field" placeholder="search here">
+                    <button type="submit" class="li-search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="li-blog-sidebar pt-25">
+            <h4 class="li-blog-sidebar-title" style="font-family:Arial">VẬT LIỆU</h4>
+            <ul class="li-blog-archive">
+                @foreach (var item in Model.ListLoaiVL)
+                {
+                    foreach (var itemsl in Model.ListSL)
+                    {
+                        if (itemsl.LoaiSP == item.MaLoai)
+                        {
+                            <li><a href="@Url.Action("XemSanPhamTheoLoai", "SanPham", new {loaisp = itemsl.LoaiSP})">@item.TenLoai (@itemsl.SoLuong)</a></li>
+                        }
+                    }
+
+                }
+            </ul>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title" style="font-family:Arial">THIẾT BỊ</h4>
+            <ul class="li-blog-archive">
+                @foreach (var item in Model.ListLoaiTB)
+                {
+                    foreach (var itemsl in Model.ListSL)
+                    {
+                        if (itemsl.LoaiSP == item.MaLoai)
+                        {
+                            <li><a href="@Url.Action("XemSanPhamTheoLoai", "SanPham", new {loaisp = item.MaLoai})">@item.TenLoai (@itemsl.SoLuong)</a></li>
+                        }
+                    }
+
+                }
+            </ul>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title" style="font-family:Arial">Bài đăng gần đây</h4>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="#">
+                        <img class="img-full" src="~/Content/images/product/small-size/7.jpg" alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="#">Cưa máy Husqvarna</a></span>
+                    <span class="li-post-date">20-10-2023</span>
+                </div>
+            </div>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="#">
+                        <img class="img-full" src="~/Content/images/product/small-size/2.png" alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="#">Cưa máy Husqvarna</a></span>
+                    <span class="li-post-date">20-10-2023</span>
+                </div>
+            </div>
+            <div class="li-recent-post pb-30">
+                <div class="li-recent-post-thumb">
+                    <a href="#">
+                        <img class="img-full" src="~/Content/images/product/small-size/3.jpg" alt="Li's Product Image">
+                    </a>
+                </div>
+                <div class="li-recent-post-des">
+                    <span><a href="#">Cưa máy Husqvarna</a></span>
+                    <span class="li-post-date">20-10-2023</span>
+                </div>
+            </div>
+        </div>
+        <div class="li-blog-sidebar">
+            <h4 class="li-blog-sidebar-title">Tags</h4>
+            <ul class="li-blog-tags">
+                <li><a href="#">GẠCH</a></li>
+                <li><a href="#">CÁT</a></li>
+                <li><a href="#">XI MĂNG</a></li>
+                <li><a href="#">VẬT LIỆU</a></li>
+                <li><a href="#">THIẾT BỊ</a></li>
+                <li><a href="#">PYNBATU</a></li>
+                <li><a href="#">MÁY TRỘN</a></li>
+                <li><a href="#">MÁY XÚC</a></li>
+                <li><a href="#">CÔNG CỤ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Begin Slider Area -->
+<div class="col-lg-9 order-1 order-lg-2">
+    <div class="slider-area pt-sm-30 pt-xs-30">
+        <div class="slider-active owl-carousel">
+            <!-- Begin Single Slide Area -->
+            <div class="single-slide align-center-left animation-style-02 bg-4">
+                <img src="~/Content/images/slider/13.jpg" style=" width: 100%;" />
+                <div class="slider-progress"></div>
+                <div class="slider-content">
+                    <h5>Giảm giá <span>20%</span> Trong tuần</h5>
+                    <h2>Cưa máy Husqvarna | 390XP</h2>
+                    <h3>Giá chỉ <span>8.050.000đ</span></h3>
+                    <div class="default-btn slide-btn">
+                        <a class="links" href="#">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Slide Area End Here -->
+            <!-- Begin Single Slide Area -->
+            <div class="single-slide align-center-left animation-style-02 bg-4">
+                <img src="~/Content/images/slider/1.png" style=" width: 100%;" />
+                <div class="slider-progress"></div>
+                <div class="slider-content">
+                    <h5>Giảm giá <span>15%</span> Trong tuần</h5>
+                    <h2>Máy nén khí không dầu Briggs Stratton</h2>
+                    <h3>Giá chỉ <span>1.840.000đ</span></h3>
+                    <div class="default-btn slide-btn">
+                        <a class="links" href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = 39, maloai = 15})">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Slide Area End Here -->
+            <!-- Begin Single Slide Area -->
+            <div class="single-slide align-center-left animation-style-02 bg-4">
+                <img src="~/Content/images/slider/2.png" style=" width: 100%;" />
+                <div class="slider-progress"></div>
+                <div class="slider-content">
+                    <h5>Giảm giá <span>20%</span> Trong tuần</h5>
+                    <h2>Máy hàn que Jasic ARC 200</h2>
+                    <h3>Giá chỉ <span>4.150.000đ</span></h3>
+                    <div class="default-btn slide-btn">
+                        <a class="links" href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = 33, maloai = 13})">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Slide Area End Here -->
+        </div>
+    </div>
+    <!-- shop-products-wrapper start -->
+    <div class="shop-products-wrapper">
+        <div class="tab-content">
+            <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
+                <div class="product-area shop-product-area">
+                    <div class="row">
+                        @{
+                            foreach (var item in Model.ListSanPham)
+                            {
+                                <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
+                                    <!-- single-product-wrap start -->
+                                    <div class="single-product-wrap">
+                                        <div class="product-image">
+                                            <a href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = item.MaSP, maloai = item.MaLoai})">
+                                                <img src="~/Content/images/product/large-size/@item.ImageUrl" width="270" height="270" alt="Li's Product Image">
+                                            </a>
+                                            <span class="sticker">New</span>
+                                        </div>
+                                        <div class="product_desc">
+                                            <div class="product_desc_info">
+                                                <div class="product-review">
+                                                    <h5 class="manufacturer">
+                                                        <a href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = item.MaSP, maloai = item.MaLoai})">@item.LoaiSanPham.TenLoai</a>
+                                                    </h5>
+                                                    <div class="rating-box">
+                                                        <ul class="rating">
+                                                            @for (int i = 1; i <= item.SoSao; i++)
+                                                            {
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                temp = i;
+                                                            }
+                                                            @{
+                                                                n = 5 - Convert.ToInt32(temp);
+                                                            }
+                                                            @for (int j = 0; j < n; j++)
+                                                            {
+                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <h4><a class="product_name" href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = item.MaSP, maloai = item.MaLoai})">@item.TenSP</a></h4>
+                                                <div class="price-box">
+                                                    <span class="new-price">@string.Format("{0:N0}", item.GiaBan) Đ</span>
+                                                </div>
+                                            </div>
+                                            <div class="add-actions">
+                                                <ul class="add-actions-link">
+                                                    <li class="add-cart active"><a href="@Url.Action("ThemSanPhamVaoGio", "GioHang", new {masp = item.MaSP})">Thêm giỏ hàng</a></li>
+                                                    <li><a href="@Url.Action("XemChiTietSanPham", "SanPham", new {masp = item.MaSP, maloai = item.MaLoai})" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                    <li>
+                                                        <a class="links-details" href="@Url.Action("ThemSanPhamYeuThich", "YeuThich", new {masp = item.MaSP})">
+                                                            @if (item.YeuThich == false)
+                                                            {
+                                                                <i class="fa fa-heart-o"></i>
+                                                            }
+                                                            else
+                                                            {
+                                                                <i class="fa fa-heart" style="color:#fe0083"></i>
+                                                            }
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- single-product-wrap end -->
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+            @if (ViewBag.TotalPages > 1)
+            {
+                <div class="paginatoin-area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <ul class="pagination-box">
+                                @if (ViewBag.CurrentPage > 1)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("ShowAllSanPham", new { page = ViewBag.CurrentPage - 1 })" class="Previous"><i class="fa fa-chevron-left"></i> Previous</a>
+                                    </li>
+                                }
+                                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                {
+                                    if (i == ViewBag.CurrentPage)
+                                    {
+                                        <li class="active"><a href="#">@i</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("ShowAllSanPham", new { page = i })">@i</a></li>
+
+                                    }
+                                }
+                                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("ShowAllSanPham", new { page = ViewBag.CurrentPage + 1 })" class="Next"> Next <i class="fa fa-chevron-right"></i></a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,594 @@
+﻿@*@{
+        Layout = null;
+    }*@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<!-- index-231:32-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Pynbatu - Cửa hàng vật liệu xây dựng trực tuyến</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- PYNBATU -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/menu/logo/4.jpg">
+    <!-- Material Design Iconic Font-V2.2.0 -->
+    <link rel="stylesheet" href="~/Content/css/material-design-iconic-font.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- Font Awesome Stars-->
+    <link rel="stylesheet" href="~/Content/css/fontawesome-stars.css">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="~/Content/css/meanmenu.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="~/Content/css/slick.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <!-- Jquery-ui CSS -->
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.min.css">
+    <!-- Venobox CSS -->
+    <link rel="stylesheet" href="~/Content/css/venobox.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="~/Content/css/nice-select.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <!-- Bootstrap V4.1.3 Fremwork CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="~/Content/css/helper.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <link rel="stylesheet" href="~/Content/css/single_listing_responsive.css">
+    <link rel="stylesheet" href="~/Content/css/single_listing_styles.css">
+    <!-- Modernizr js -->
+    <script src="~/Content/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Begin Body Wrapper -->
+    <div class="body-wrapper">
+        <!-- Begin Header Area -->
+        <header>
+            <!-- Begin Header Top Area -->
+            <div class="header-top">
+                <div class="container" style="height:40px">
+                    <div class="row">
+                        <!-- Begin Header Top Left Area -->
+                        <div class="col-lg-7 col-md-7">
+                            <div class="row">
+                                <div class="header-top-left col-lg-3 col-md-3">
+                                    <ul class="phone-wrap">
+                                        <li class="mt-2"><span>SDT: </span><a href="#">(+84) 0569512477</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-9 col-md-9 float-right">
+                                    <div class="row">
+
+                                        @{
+
+                                            var user = Session["user"] as string;
+                                            var cart = Convert.ToInt32(Session["cart"]);
+                                        }
+                                        @if (!string.IsNullOrEmpty(user))
+                                        {
+                                            <div class="user-info" id="thongtin-user">
+                                                <h4 class="float-left mt-2 ml-55 text-info">Chào mừng @user</h4>
+                                                <a class="float-right pl-2"><img src="~/Content/images/product-details/2.png" /></a>
+                                            </div>
+                                            <ul class="user-options" id="userOptions">
+                                                <li><a href="#"><img class="pr-2" src="~/Content/images/menu/flag-icon/profile.png" alt="" width="30" height="25">Thông tin cá nhân</a></li>
+                                                <li title="Những đơn hàng chưa được xác nhận sẽ ở đây"><a href="/HoaDon/HoaDonChoXacNhan2"><img class="pr-2" src="~/Content/images/menu/flag-icon/donhang.png" alt="" width="30" height="25">Chờ xác nhận <span class="cxn-count">@Session["cxn"]</span></a></li>
+                                                <li title="Những đơn hàng đã được đóng gói và chờ người đến lấy hàng sẽ ở đây"><a href="/HoaDon/HoaDonChoLayHang"><img class="pr-2" src="~/Content/images/menu/flag-icon/delivery.png" alt="" width="30" height="25">Chờ lấy hàng <span class="clh-count">@Session["clh"]</span></a></li>
+                                                <li title="Những đơn hàng đang được vận chuyển đến bạn"><a href="/HoaDon/HoaDonDaXacNhan"><img class="pr-2" src="~/Content/images/menu/flag-icon/giaohang.png" alt="" width="30" height="25">Đang giao hàng <span class="dgh-count">@Session["dgh"]</span></a></li>
+                                                <li><a href="/NguoiDung/DangXuat"><img class="pr-2" src="~/Content/images/menu/flag-icon/exit.png" alt="" width="30" height="25">Đăng xuất</a></li>
+                                            </ul>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Header Top Left Area End Here -->
+                        <!-- Begin Header Top Right Area -->
+                        <div class="col-lg-5 col-md-5">
+                            <div class="header-top-right">
+                                <ul class="ht-menu mt-2">
+                                    <!-- Begin Setting Area -->
+                                    <li>
+                                        <div class="ht-setting-trigger"><span>Cài Đặt</span></div>
+                                        <div class="setting ht-setting">
+                                            <ul class="ht-setting-list">
+                                                <li><a href="login-register.html">Tài Khoản</a></li>
+                                                <li><a href="checkout.html">Đặt Hàng</a></li>
+                                                <li><a href="login-register.html">Đăng Nhập</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- Setting Area End Here -->
+                                    <!-- Begin Currency Area -->
+                                    <li>
+                                        <span class="currency-selector-wrapper">Tiền tệ :</span>
+                                        <div class="ht-currency-trigger"><span>VNĐ đ</span></div>
+                                        <div class="currency ht-currency">
+                                            <ul class="ht-setting-list">
+                                                <li class="active"><a href="#">VNĐ đ</a></li>
+                                                <li><a href="#">USD $</a></li>
+                                                <li><a href="#">EUR €</a></li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- Currency Area End Here -->
+                                    <!-- Begin Language Area -->
+                                    <li>
+                                        <span class="language-selector-wrapper">Ngôn ngữ :</span>
+                                        <div class="ht-language-trigger"><span>Việt Nam</span></div>
+                                        <div class="language ht-language">
+                                            <ul class="ht-setting-list">
+                                                <li class="active"><a href="#"><img src="~/Content/images/menu/flag-icon/3.jpg" alt="">Việt Nam</a></li>
+                                                <li><a href="#"><img src="~/Content/images/menu/flag-icon/1.jpg" alt="">English</a></li>
+                                                <li><a href="#"><img src="~/Content/images/menu/flag-icon/2.jpg" alt="">France</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- Language Area End Here -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Header Top Right Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Header Top Area End Here -->
+            <!-- Begin Header Middle Area -->
+            <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Header Logo Area -->
+
+                        <div class="col-lg-2">
+                            <div class="logo pb-sm-30 pb-xs-30">
+                                <a href="/SanPham/ShowAllSanPham">
+                                    <img src="~/Content/images/menu/logo/5.jpg" width="142" height="60" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Header Logo Area End Here -->
+                        <!-- Begin Header Middle Right Area -->
+                        <div class="col-lg-10 pl-0 ml-sm-15 ml-xs-15">
+                            <!-- Begin Header Middle Searchbox Area -->
+                            <form action="/SanPham/TimKiemSanPham" class="hm-searchbox ml-50">
+                                <select class="nice-select select-search-category">
+                                    <option value="0">Tất cả</option>
+                                    <option value="10">Vật liệu</option>
+                                    <option value="17">- -  Gạch ngói</option>
+                                    <option value="20">- - - -  Gạch ngói 1</option>
+                                    <option value="21">- - - -  Gạch ngói 2</option>
+                                    <option value="22">- - - -  Gạch ngói 3</option>
+                                    <option value="23">- - - -  Gạch ngói 4</option>
+                                    <option value="24">- - - -  Gạch ngói 5</option>
+                                    <option value="42">- -  Nền gỗ</option>
+                                    <option value="45">- - - -  Nền gỗ 1</option>
+                                    <option value="47">- - - -  Nền gỗ 2</option>
+                                    <option value="48">- - - -  Nền gỗ 3</option>
+                                    <option value="49">- - - -  Nền gỗ 4</option>
+                                    <option value="50">- - - -  Nền gỗ 5</option>
+                                    <option value="43">- -  Nền gạch</option>
+                                    <option value="53">- - - -  Nền gạch 1</option>
+                                    <option value="54">- - - -  Nền gạch 2</option>
+                                    <option value="55">- - - -  Nền gạch 3</option>
+                                    <option value="56">- - - -  Nền gạch 4</option>
+                                    <option value="57">- - - -  Nền gạch 5</option>
+                                    <option value="11">Vật liệu</option>
+                                    <option value="66">- -  Máy xúc</option>
+                                    <option value="68">- - - -  Máy xúc 1</option>
+                                    <option value="69">- - - -  Máy xúc 2</option>
+                                    <option value="70">- - - -  Máy xúc 3</option>
+                                    <option value="71">- - - -  Máy xúc 4</option>
+                                    <option value="72">- - - -  Máy xúc 5</option>
+                                    <option value="67">- -  Máy ủi</option>
+                                    <option value="74">- - - -  Máy ủi 1</option>
+                                    <option value="75">- - - -  Máy ủi 2</option>
+                                    <option value="76">- - - -  Máy ủi 3</option>
+                                    <option value="77">- - - -  Máy ủi 4</option>
+                                    <option value="78">- - - -  Máy ủi 5</option>
+                                </select>
+                                <input type="text" name="search" placeholder="Nhập tên sản phẩm bạn muốn tìm ...">
+                                <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                            <!-- Header Middle Searchbox Area End Here -->
+                            <!-- Begin Header Middle Right Area -->
+                            <div class="header-middle-right pl-3">
+                                <ul class="hm-menu">
+                                    <!-- Begin Header Middle Wishlist Area -->
+                                    <li class="hm-wishlist">
+                                        <a href="/YeuThich/SanPhamYeuThich">
+                                            <span class="cart-item-count wishlist-item-count">@Session["favorite"]</span>
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </li>
+                                    <!-- Header Middle Wishlist Area End Here -->
+                                    <!-- Begin Header Mini Cart Area -->
+                                    <li class="hm-minicart">
+                                        <div class="hm-minicart-trigger">
+                                            <span class="item-icon"></span>
+                                            <span class="item-text">
+                                                @string.Format("{0:N0}", Session["tongtien"]) Đ
+                                                @if (cart == 0)
+                                                {
+                                                    <span class="cart-item-zero">@Session["cart"]</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="cart-item-count">@Session["cart"]</span>
+                                                }
+
+                                            </span>
+                                        </div>
+                                        <span></span>
+                                        <div class="minicart">
+                                            <p class="minicart-total">TỔNG CỘNG: <span>@string.Format("{0:N0}", Session["tongtien"]) Đ</span></p>
+                                            <div class="minicart-button">
+                                                <a href="/GioHang/LayGioHang" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <span>Xem Giỏ Hàng</span>
+                                                </a>
+                                                <a href="/GioHang/DatHang" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <span>Đặt Hàng</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- Header Mini Cart Area End Here -->
+                                </ul>
+                            </div>
+                            <!-- Header Middle Right Area End Here -->
+                        </div>
+                        <!-- Header Middle Right Area End Here -->
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Header Middle Area End Here -->
+            <!-- Begin Header Bottom Area -->
+            <div class="header-bottom header-sticky d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Begin Header Bottom Menu Area -->
+                            <div class="hb-menu hb-menu-2 d-xl-block">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/SanPham/ShowAllSanPham">Cửa hàng</a></li>
+                                        <li><a href="/TinTuc/TinTuc">Blog</a></li>
+                                        <li><a href="/AboutUs/Index">Chúng tôi</a></li>
+                                        <li><a href="#">liên hệ</a></li>
+                                        <li><a href="/SanPham/XemVatLieu">Vật liệu</a></li>
+                                        <li><a href="/SanPham/XemThietBi">Thiết bị</a></li>
+                                        <li class="dropdown-holder">
+                                            <a href="#">Tài khoản</a>
+                                            <ul class="hb-dropdown">
+                                                @if (!string.IsNullOrEmpty(user))
+                                                {
+                                                    <li><a href="/NguoiDung/DangXuat">Đăng Xuất</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a href="/NguoiDung/DangNhap">Đăng Nhập</a></li>
+                                                }
+                                                <li><a href="/NguoiDung/DangKy">Đăng Ký</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- Begin Header Bottom Menu Information Area -->
+                                        <li class="hb-info f-right p-0 d-sm-none d-lg-block">
+                                            <span>DACN Quản lý vật liệu xây dựng Yến Bảo Trung(PYNBATU)</span>
+                                        </li>
+                                        <!-- Header Bottom Menu Information Area End Here -->
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- Header Bottom Menu Area End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Bottom Area End Here -->
+            <!-- Begin Mobile Menu Area -->
+            <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="mobile-menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu Area End Here -->
+        </header>
+        <!-- Header Area End Here -->
+        <!-- Begin Slider With Category Menu Area -->
+        @RenderBody()
+
+    </div>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME"
+                  chat-title="pynbatu"
+                  agent-id="89e4155f-cbc4-4d45-a09a-b0af1ea68409"
+                  chat-icon="/Content/images/menu/logo/8.png"
+                  language-code="en">
+    </df-messenger>
+    <style>
+        df-messenger {
+            --df-messenger-bot-message: #fed700;
+            --df-messenger-button-titlebar-color: #fed700;
+            --df-messenger-user-message: #375ffa;
+        }
+    </style>
+    <!-- Slider With Category Menu Area End Here -->
+    <!-- Begin Footer Area -->
+    <div class="footer">
+        <div class="footer-static-top">
+            <div class="container">
+                <div class="footer-shipping pt-60 pb-55 pb-xs-25">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="~/Content/images/shipping-icon/1.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>
+                                        Giao Hàng Miễn Phí
+                                    </h2>
+                                    <p>
+                                        Và trả lại miễn phí. Xem thanh toán để biết ngày giao hàng.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="~/Content/images/shipping-icon/2.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>
+                                        Thanh Toán An Toàn
+                                    </h2>
+                                    <p>Thanh toán bằng các phương thức thanh toán an toàn và phổ biến nhất thế giới.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="~/Content/images/shipping-icon/3.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>Mua Sắm Với Sự Tự Tin</h2>
+                                    <p>Bảo vệ người mua của chúng tôi bao gồm việc mua hàng của bạn từ nhấp chuột đến giao hàng.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                            <div class="li-shipping-inner-box">
+                                <div class="shipping-icon">
+                                    <img src="~/Content/images/shipping-icon/4.png" alt="Shipping Icon">
+                                </div>
+                                <div class="shipping-text">
+                                    <h2>
+                                        24/7 Trung Tâm Trợ Giúp
+                                    </h2>
+                                    <p>
+                                        Có một câu hỏi? Gọi cho Chuyên gia hoặc trò chuyện trực tuyến.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-static-middle">
+            <div class="container">
+                <div class="footer-logo-wrap pt-50 pb-35">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="footer-logo">
+                                <img src="~/Content/images/menu/logo/5.jpg" alt="Footer Logo" width="142" height="60">
+                                <p class="info">
+                                    Chúng tôi là cửa hàng chuyên bán vật liệu và thiết bị xây dựng trực tuyến.
+                                </p>
+                            </div>
+                            <ul class="des">
+                                <li>
+                                    <span>Địa Chỉ: </span>
+                                    Ấp Chợ, xã Trung An, huyện Củ Chi, TP HCM
+                                </li>
+                                <li>
+                                    <span>Điện Thoại: </span>
+                                    <a href="#">(+84) 0569512477</a>
+                                </li>
+                                <li>
+                                    <span>Email: </span>
+                                    <a href="mailto://040802.nguyenbao@gmail.com">040802.nguyenbao@gmail.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-6">
+                            <div class="footer-block">
+                                <h3 class="footer-block-title">Sản Phẩm</h3>
+                                <ul>
+                                    <li><a href="#">Giảm giá</a></li>
+                                    <li><a href="#">Sản phẩm mới</a></li>
+                                    <li><a href="#">Hàng bán chạy nhất</a></li>
+                                    <li><a href="#">Liên hệ chúng tôi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-6">
+                            <div class="footer-block">
+                                <h3 class="footer-block-title">Công Ty</h3>
+                                <ul>
+                                    <li><a href="#">Vận Chuyển</a></li>
+                                    <li><a href="#">Thông Báo Pháp Lý</a></li>
+                                    <li><a href="#">Về Chúng Tôi</a></li>
+                                    <li><a href="#">Liên Hệ Chúng Tôi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="footer-block">
+                                <h3 class="footer-block-title">Theo Dõi Chúng Tôi</h3>
+                                <ul class="social-link">
+                                    <li class="twitter">
+                                        <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="rss">
+                                        <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
+                                            <i class="fa fa-rss"></i>
+                                        </a>
+                                    </li>
+                                    <li class="google-plus">
+                                        <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li class="facebook">
+                                        <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li class="youtube">
+                                        <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li class="instagram">
+                                        <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Begin Footer Newsletter Area -->
+                            <div class="footer-newsletter">
+                                <h4>
+                                    Đăng ký nhận bản tin
+                                </h4>
+                                <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
+                                    <div id="mc_embed_signup_scroll">
+                                        <div id="mc-form" class="mc-form subscribe-form form-group">
+                                            <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
+                                            <button class="btn" id="mc-submit">Đặt mua</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Footer Newsletter Area End Here -->
+                        </div>
+                        <!-- Footer Block Area End Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Static Middle Area End Here -->
+        <!-- Begin Footer Static Bottom Area -->
+        <div class="footer-static-bottom pt-55 pb-55">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Begin Footer Links Area -->
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="#">Online Shopping</a></li>
+                                <li><a href="#">Promotions</a></li>
+                                <li><a href="#">My Orders</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">Most Populars</a></li>
+                                <li><a href="#">New Arrivals</a></li>
+                                <li><a href="#">Special Products</a></li>
+                                <li><a href="#">Manufacturers</a></li>
+                                <li><a href="#">Our Stores</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Payments</a></li>
+                                <li><a href="#">Warantee</a></li>
+                                <li><a href="#">Refunds</a></li>
+                                <li><a href="#">Checkout</a></li>
+                                <li><a href="#">Discount</a></li>
+                                <li><a href="#">Refunds</a></li>
+                                <li><a href="#">Policy Shipping</a></li>
+                            </ul>
+                        </div>
+                        <!-- Footer Links Area End Here -->
+                        <!-- Begin Footer Payment Area -->
+                        <div class="copyright text-center">
+                            <a href="#">
+                                <img src="~/Content/images/payment/1.png" alt="">
+                            </a>
+                        </div>
+                        <!-- Footer Payment Area End Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Static Bottom Area End Here -->
+    </div>
+    <!-- Footer Area End Here -->
+    <!-- Body Wrapper End Here -->
+    <!-- jQuery-V1.12.4 -->
+
+    <script src="~/Content/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="~/Content/js/vendor/popper.min.js"></script>
+    <!-- Bootstrap V4.1.3 Fremwork js -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Ajax Mail js -->
+    <script src="~/Content/js/ajax-mail.js"></script>
+    <!-- Meanmenu js -->
+    <script src="~/Content/js/jquery.meanmenu.min.js"></script>
+    <!-- Wow.min js -->
+    <script src="~/Content/js/wow.min.js"></script>
+    <!-- Slick Carousel js -->
+    <script src="~/Content/js/slick.min.js"></script>
+    <!-- Owl Carousel-2 js -->
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <!-- Magnific popup js -->
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <!-- Isotope js -->
+    <script src="~/Content/js/isotope.pkgd.min.js"></script>
+    <!-- Imagesloaded js -->
+    <script src="~/Content/js/imagesloaded.pkgd.min.js"></script>
+    <!-- Mixitup js -->
+    <script src="~/Content/js/jquery.mixitup.min.js"></script>
+    <!-- Countdown -->
+    <script src="~/Content/js/jquery.countdown.min.js"></script>
+    <!-- Counterup -->
+    <script src="~/Content/js/jquery.counterup.min.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Content/js/waypoints.min.js"></script>
+    <!-- Barrating -->
+    <script src="~/Content/js/jquery.barrating.min.js"></script>
+    <!-- Jquery-ui -->
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <!-- Venobox -->
+    <script src="~/Content/js/venobox.min.js"></script>
+    <!-- Nice Select js -->
+    <script src="~/Content/js/jquery.nice-select.min.js"></script>
+    <!-- ScrollUp js
+    <script src="~/Content/js/scrollUp.min.js"></script>-->
+    <!-- Main/Activator js -->
+    <script src="~/Content/js/main.js"></script>
+</body>
+
+<!-- index-231:38-->
+</html>
